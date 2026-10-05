@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>buketduasatu.mks — Buket Bunga Wisuda & Seminar di Makassar</title>
+  <meta name="description" content="Pesan buket bunga, buket uang dengan pilihan paket kapasitas, boneka, dan hadiah spesial di Makassar. Konsultasi mudah via WhatsApp.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="buketduasatu.mks — Buket Bunga di Makassar">
+  <meta property="og:description" content="Pesan buket bunga dan buket uang dengan paket kapasitas yang jelas di Makassar.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Assets/Logo/LogoBuketDuaSatu.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Assets/Logo/LogoBuketDuaSatu.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              rose: '#B84F68',
+              'rose-dark': '#A84A5F',
+              'rose-light': '#F2C4CE',
+              'rose-display': '#D4617A',
+              cream: '#FDFAF7',
+              'warm-white': '#FFF5F5',
+              blush: '#F7E8EC',
+            },
+            neutral: {
+              900: '#1A0D11',
+              700: '#4A2F38',
+              400: '#9B7A84',
+              200: '#E8D8DC',
+              100: '#F4EEF0',
+            },
+            semantic: {
+              success: '#2D7A4F',
+              error: '#C0392B',
+              warning: '#B7770D',
+              info: '#1565C0',
+            },
+            wa: {
+              green: '#25D366',
+              'green-dark': '#1DA851',
+            },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'rose': '0 4px 14px 0 rgba(212,97,122,0.40)',
+            'rose-sm': '0 1px 4px 0 rgba(212,97,122,0.20)',
+            'card': '0 1px 2px 0 rgba(74,47,56,0.08)',
+            'card-hover': '0 4px 12px 0 rgba(212,97,122,0.15)',
+            'wa': '0 8px 25px rgba(37,211,102,0.45)',
+          },
+          zIndex: { '45': '45', '60': '60', '70': '70' },
+          container: {
+            center: true,
+            padding: { DEFAULT: '1rem', md: '1.5rem', lg: '2rem' },
+          },
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "",
+    "image": "Assets/Logo/LogoBuketDuaSatu.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Makassar",
+      "addressRegion": "Sulawesi Selatan",
+      "addressCountry": "ID"
+    },
+    "telephone": "+6289527529107"
+  }
+  </script>
+</head>
+<body class="relative">
+  <!-- Banner LocalStorage Error -->
+  <div id="ls-error-banner" class="hidden bg-semantic-error text-white text-center py-2 px-4 text-sm font-medium z-70 relative">
+    ⚠️ Keranjang tidak tersimpan — jangan refresh sebelum memesan.
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur-md shadow-sm">
+    <div class="container flex items-center justify-between py-4">
+      <a href="#" class="flex items-center gap-2 focus-visible-ring rounded" aria-label="Beranda buketduasatu.mks">
+        <img src="Assets/Logo/LogoBuketDuaSatu.png" alt="Logo buketduasatu.mks" width="40" height="40" class="rounded-full">
+        <span class="font-display font-bold text-xl text-brand-rose"><span class="dynamic-nama-usaha"></span></span>
+      </a>
+      
+      <nav aria-label="Navigasi utama" class="hidden md:flex items-center gap-6 text-neutral-700 font-medium">
+        <a href="#koleksi" class="hover:text-brand-rose transition-colors focus-visible-ring rounded">Koleksi</a>
+        <a href="#keunggulan" class="hover:text-brand-rose transition-colors focus-visible-ring rounded">Keunggulan</a>
+        <a href="#harga" class="hover:text-brand-rose transition-colors focus-visible-ring rounded">Harga</a>
+        <a href="#faq" class="hover:text-brand-rose transition-colors focus-visible-ring rounded">FAQ</a>
+        <a href="#kontak" class="hover:text-brand-rose transition-colors focus-visible-ring rounded">Kontak</a>
+      </nav>
+      
+      <div class="flex items-center gap-4">
+        <button id="btn-cart" class="relative p-2 text-neutral-700 hover:text-brand-rose transition-colors focus-visible-ring rounded" aria-label="Buka keranjang belanja">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="cart-badge" class="hidden absolute top-0 right-0 bg-brand-rose text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full transform translate-x-1 -translate-y-1" aria-live="polite">0</span>
+        </button>
+        <button id="btn-menu-mobile" class="md:hidden p-2 text-neutral-700 focus-visible-ring rounded" aria-expanded="false" aria-label="Buka menu navigasi">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="hidden md:hidden bg-brand-cream border-t border-neutral-200">
+      <nav class="flex flex-col py-4 px-6 gap-4">
+        <a href="#koleksi" class="text-neutral-700 font-medium hover:text-brand-rose">Koleksi</a>
+        <a href="#keunggulan" class="text-neutral-700 font-medium hover:text-brand-rose">Keunggulan</a>
+        <a href="#harga" class="text-neutral-700 font-medium hover:text-brand-rose">Harga</a>
+        <a href="#faq" class="text-neutral-700 font-medium hover:text-brand-rose">FAQ</a>
+        <a href="#kontak" class="text-neutral-700 font-medium hover:text-brand-rose">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-brand-blush py-16 md:py-24">
+      <div class="container grid md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Hadiah Terbaik untuk Momen <span class="text-brand-rose">Spesialmu</span>
+          </h1>
+          <p class="text-lg text-neutral-700 max-w-lg">
+            Temukan berbagai pilihan buket bunga, buket uang dengan paket sesuai kapasitas lembar, dan boneka untuk wisuda, seminar, hingga kado orang terkasih di Makassar.
+          </p>
+          <a href="#koleksi" class="inline-block bg-brand-rose text-white font-medium py-3 px-8 rounded-full shadow-rose hover:bg-brand-rose-dark transition-colors focus-visible-ring">
+            Lihat Koleksi
+          </a>
+        </div>
+        <div class="relative">
+          <img src="Assets/Kategori buket bunga/harga-150k/IMG-20260513-WA0003.jpg" alt="Buket bunga premium" width="600" height="600" class="rounded-2xl shadow-xl object-cover w-full h-[400px] md:h-[500px]">
+          <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-neutral-100 hidden md:block">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">✨</span>
+              <div>
+                <p class="font-bold text-neutral-900">Premium Quality</p>
+                <p class="text-sm text-neutral-400">Dirangkai dengan cinta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Koleksi Section -->
+    <section id="koleksi" class="py-16 md:py-24 bg-white">
+      <div class="container space-y-10">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl md:text-4xl font-bold">Koleksi Kami</h2>
+          <p class="text-neutral-400 max-w-2xl mx-auto">Pilih produk yang sesuai dengan keinginan dan budgetmu.</p>
+        </div>
+        
+        <!-- Filters -->
+        <div class="flex items-center gap-3 overflow-x-auto filter-scroll pb-2" id="filter-container">
+          <button class="filter-btn bg-brand-rose text-white px-5 py-2 rounded-full font-medium whitespace-nowrap focus-visible-ring transition-colors shadow-rose-sm" data-filter="Semua" aria-pressed="true">Semua</button>
+          <!-- JS will populate other categories -->
+        </div>
+
+        <!-- Search -->
+        <div class="relative max-w-md mx-auto md:mx-0">
+          <input type="text" id="search-input" placeholder="Cari buket..." class="w-full pl-10 pr-4 py-2 rounded-full border border-neutral-200 focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors" aria-label="Cari produk">
+          <svg class="absolute left-3 top-2.5 text-neutral-400" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <!-- JS will populate products here -->
+        </div>
+        
+        <div id="no-products" class="hidden text-center py-10 text-neutral-400">
+          Tidak ada produk yang cocok dengan pencarianmu.
+        </div>
+      </div>
+    </section>
+
+    <!-- Keunggulan & Jaminan Layanan Section -->
+    <section id="keunggulan" class="py-16 md:py-24 bg-brand-cream/60" aria-labelledby="keunggulan-heading">
+      <div class="container space-y-10">
+        <div class="text-center space-y-3 max-w-2xl mx-auto">
+          <span class="inline-block px-3 py-1 bg-brand-rose/10 text-brand-rose text-xs font-semibold tracking-wider uppercase rounded-full">Mengapa Memilih Kami</span>
+          <h2 id="keunggulan-heading" class="text-3xl md:text-4xl font-bold font-display text-neutral-900">Keunggulan & Jaminan Layanan</h2>
+          <p class="text-neutral-600 text-sm md:text-base">Belanja buket lebih tenang dan percaya diri dengan jaminan kualitas terbaik dari kami.</p>
+        </div>
+        <div id="features-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- JS will populate -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Daftar Harga Section -->
+    <section id="harga" class="py-16 md:py-24 bg-white" aria-labelledby="harga-heading">
+      <div class="container max-w-4xl space-y-10">
+        <div class="text-center space-y-3">
+          <span class="inline-block px-3 py-1 bg-brand-rose/10 text-brand-rose text-xs font-semibold tracking-wider uppercase rounded-full">Transparansi Harga</span>
+          <h2 id="harga-heading" class="text-3xl md:text-4xl font-bold font-display text-neutral-900">Daftar Harga</h2>
+          <p class="text-neutral-600 text-sm md:text-base">Harga di bawah adalah perkiraan. Harga final dan ongkos kirim dikonfirmasi via WhatsApp.</p>
+        </div>
+        <!-- Tab toggle dan tabel dirender oleh JS (renderHargaSection) -->
+        <div id="harga-container">
+          <!-- JS will populate -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-24 bg-white">
+      <div class="container max-w-3xl space-y-10">
+        <div class="text-center space-y-4">
+          <h2 class="text-3xl md:text-4xl font-bold">Tanya Jawab (FAQ)</h2>
+          <p class="text-neutral-400">Informasi yang sering ditanyakan seputar pemesanan.</p>
+        </div>
+        <div id="faq-container" class="space-y-4">
+          <!-- JS will populate -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="kontak" class="bg-neutral-900 text-white py-12" role="contentinfo">
+    <div class="container grid md:grid-cols-3 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <img src="Assets/Logo/LogoBuketDuaSatu.png" alt="Logo" width="32" height="32" class="rounded-full bg-white">
+          <span class="font-display font-bold text-xl text-brand-rose-light"><span class="dynamic-nama-usaha"></span></span>
+        </div>
+        <p class="text-neutral-400 text-sm max-w-sm">Mewujudkan kebahagiaan lewat setiap rangkain bunga untuk momen terbaikmu di Makassar. Untuk buket uang lebih dari 100 lembar, silakan konsultasi melalui WhatsApp.</p>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold">Kontak Kami</h3>
+        <ul class="space-y-2 text-sm text-neutral-400">
+          <li><a id="ig-link-footer" href="#" target="_blank" rel="noopener noreferrer" class="hover:text-brand-rose-light transition-colors"></a></li>
+          <li id="wa-text-footer"></li>
+          <li id="jam-footer">Jam: Setiap hari 07.00–22.00 WITA</li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h3 class="text-lg font-bold">Alamat</h3>
+        <p id="alamat-footer" class="text-sm text-neutral-400 leading-relaxed">
+          Jl. Zebra No.21 Makassar(Sekitaran Mall Ratu Indah)
+        </p>
+      </div>
+    </div>
+    <div class="container mt-12 pt-8 border-t border-neutral-700 text-center text-sm text-neutral-400">
+      &copy; <span id="year"></span> <span class="dynamic-nama-usaha"></span>. Hak cipta dilindungi.
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a id="wa-float-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa-float bg-wa-green text-white p-4 rounded-full flex items-center justify-center hover:bg-wa-green-dark transition-colors focus-visible-ring" aria-label="Hubungi kami via WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <!-- Cart Slide Panel -->
+  <div id="cart-overlay" class="fixed inset-0 bg-neutral-900/50 z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="cart-panel" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-60 slide-panel shadow-2xl flex flex-col" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="p-4 border-b border-neutral-100 flex items-center justify-between">
+      <h2 id="cart-title" class="text-xl font-bold flex items-center gap-2">
+        Keranjang Belanja
+        <span id="cart-count-title" class="text-sm bg-neutral-100 text-neutral-700 px-2 py-1 rounded-full">0</span>
+      </h2>
+      <button id="btn-close-cart" class="p-2 text-neutral-400 hover:text-neutral-900 rounded-full focus-visible-ring" aria-label="Tutup keranjang">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-4">
+      <!-- JS will populate -->
+    </div>
+    
+    <div class="border-t border-neutral-100 p-4 bg-brand-cream space-y-4">
+      <p class="text-xs text-neutral-500 text-center leading-relaxed">
+        Punya foto referensi? Kirim langsung di chat WhatsApp setelah pesan ini terbuka.
+      </p>
+      <div class="flex justify-between items-center text-lg font-bold">
+        <span>Total</span>
+        <span id="cart-total" class="text-brand-rose">Rp 0</span>
+      </div>
+      <p id="cart-estimate-notice" class="text-xs text-neutral-500 text-center leading-relaxed">
+        Harga bersifat perkiraan; harga final dan ongkos kirim dikonfirmasi lewat WhatsApp.
+      </p>
+      <button id="btn-checkout" class="w-full bg-brand-rose text-white font-bold py-3 rounded-xl shadow-rose hover:bg-brand-rose-dark transition-colors focus-visible-ring disabled:opacity-50 disabled:cursor-not-allowed">
+        Lanjut Pesan
+      </button>
+    </div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="fixed inset-0 z-70 modal-fade flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
+    <div class="absolute inset-0 bg-neutral-900/60" id="product-modal-backdrop"></div>
+    <div class="relative bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto modal-content-scale shadow-2xl flex flex-col md:flex-row">
+      <button id="btn-close-modal" class="absolute top-4 right-4 z-10 bg-white/80 backdrop-blur p-2 text-neutral-700 hover:text-brand-rose rounded-full shadow-sm focus-visible-ring" aria-label="Tutup modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      
+      <div class="w-full md:w-1/2 h-64 md:h-auto bg-neutral-100">
+        <img id="modal-img" src="" alt="Gambar Produk" class="w-full h-full object-cover">
+      </div>
+      
+      <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col">
+        <span id="modal-category" class="text-sm font-medium text-brand-rose mb-1">Kategori</span>
+        <h2 id="modal-title" class="text-2xl font-bold mb-2 text-neutral-900">Nama Produk</h2>
+        <div id="modal-price" class="text-xl font-bold text-neutral-700 mb-6">Rp 0</div>
+        
+        <div class="flex-1">
+          <h3 class="font-bold text-sm text-neutral-900 mb-2">Pilihan Gambar:</h3>
+          <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto pb-2 filter-scroll">
+            <!-- JS populated -->
+          </div>
+        </div>
+        
+        <!-- Konfigurator Harga Bertingkat (FR-P7) -->
+        <div id="modal-configurator" class="mt-4 pt-4 border-t border-neutral-100 hidden"></div>
+        
+        <!-- Catatan Khusus Buket Opsional (FR-C, FR-E, FR-F, FR-I) -->
+        <div class="mt-4 pt-4 border-t border-neutral-100">
+          <div class="flex justify-between items-center mb-1">
+            <label for="modal-note" class="text-xs font-semibold text-neutral-700">Catatan untuk buket ini (opsional):</label>
+            <span id="modal-note-count" class="text-xs text-neutral-400" aria-live="polite">0/200</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mb-2" id="modal-note-chips" role="group" aria-label="Saran awalan catatan">
+            <button type="button" class="modal-chip-btn inline-flex items-center justify-center min-h-[44px] px-3 py-2 text-xs font-medium rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus-visible-ring transition-colors" data-prefix="Warna: " aria-label="Sisipkan awalan Warna:">Warna: </button>
+            <button type="button" class="modal-chip-btn inline-flex items-center justify-center min-h-[44px] px-3 py-2 text-xs font-medium rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus-visible-ring transition-colors" data-prefix="Pita: " aria-label="Sisipkan awalan Pita:">Pita: </button>
+            <button type="button" class="modal-chip-btn inline-flex items-center justify-center min-h-[44px] px-3 py-2 text-xs font-medium rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus-visible-ring transition-colors" data-prefix="Hindari: " aria-label="Sisipkan awalan Hindari:">Hindari: </button>
+            <button type="button" class="modal-chip-btn inline-flex items-center justify-center min-h-[44px] px-3 py-2 text-xs font-medium rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 focus-visible-ring transition-colors" data-prefix="Bentuk: " aria-label="Sisipkan awalan Bentuk:">Bentuk: </button>
+          </div>
+          <textarea id="modal-note" rows="2" maxlength="200" placeholder="Contoh: dominan warna putih dan sage, pita emas, tanpa bunga lili" class="w-full px-3 py-2 text-xs border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors"></textarea>
+          <p class="text-xs text-neutral-500 mt-1.5 leading-relaxed">Punya foto referensi? Kirim langsung di chat WhatsApp setelah pesan ini terbuka.</p>
+        </div>
+        
+        <button id="btn-add-cart" class="w-full mt-6 bg-brand-rose text-white font-bold py-3 rounded-xl shadow-rose hover:bg-brand-rose-dark transition-colors focus-visible-ring disabled:opacity-50 flex justify-center items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          Tambah ke Keranjang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Form Modal -->
+  <div id="order-modal" class="fixed inset-0 z-70 modal-fade flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-order-title">
+    <div class="absolute inset-0 bg-neutral-900/60" id="order-modal-backdrop"></div>
+    <div class="relative bg-white rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto modal-content-scale shadow-2xl">
+      <div class="sticky top-0 bg-white z-10 border-b border-neutral-100 p-4 flex justify-between items-center">
+        <h2 id="modal-order-title" class="text-xl font-bold">Detail Pengiriman</h2>
+        <button id="btn-close-order" class="p-2 text-neutral-400 hover:text-neutral-900 rounded-full focus-visible-ring" aria-label="Tutup form pemesanan">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      
+      <form id="order-form" class="p-4 md:p-6 space-y-4">
+        <div id="form-error" class="hidden bg-semantic-error/10 text-semantic-error p-3 rounded-lg text-sm mb-4" role="alert"></div>
+
+        <div>
+          <label for="pemesan" class="block text-sm font-medium text-neutral-700 mb-1">Nama Pemesan *</label>
+          <input type="text" id="pemesan" name="pemesan" required class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors">
+        </div>
+        
+        <div>
+          <label for="penerima" class="block text-sm font-medium text-neutral-700 mb-1">Nama Penerima *</label>
+          <input type="text" id="penerima" name="penerima" required class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors">
+        </div>
+        
+        <div>
+          <label for="tanggal" class="block text-sm font-medium text-neutral-700 mb-1">Tanggal *</label>
+          <input type="date" id="tanggal" name="tanggal" required class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors">
+        </div>
+        
+        <div>
+          <span class="block text-sm font-medium text-neutral-700 mb-2">Metode Pengiriman *</span>
+          <div class="flex gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="metode" value="antar" checked class="text-brand-rose focus:ring-brand-rose accent-brand-rose">
+              <span class="text-sm">Antar ke Alamat</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="metode" value="ambil" class="text-brand-rose focus:ring-brand-rose accent-brand-rose">
+              <span class="text-sm">Ambil Sendiri</span>
+            </label>
+          </div>
+        </div>
+        
+        <div id="alamat-container">
+          <label for="alamat" class="block text-sm font-medium text-neutral-700 mb-1">Alamat Lengkap *</label>
+          <textarea id="alamat" name="alamat" rows="2" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors"></textarea>
+        </div>
+        
+        <div>
+          <div class="flex justify-between items-end mb-1">
+            <label for="ucapan" class="block text-sm font-medium text-neutral-700">Ucapan Kartu (Opsional)</label>
+            <span id="ucapan-count" class="text-xs text-neutral-400">0/200</span>
+          </div>
+          <textarea id="ucapan" name="ucapan" rows="2" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors"></textarea>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-end mb-1">
+            <label for="catatan" class="block text-sm font-medium text-neutral-700">Catatan umum pesanan (opsional, misalnya jam antar atau patokan alamat)</label>
+            <span id="catatan-count" class="text-xs text-neutral-400">0/300</span>
+          </div>
+          <textarea id="catatan" name="catatan" rows="2" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:border-brand-rose focus:ring-1 focus:ring-brand-rose outline-none transition-colors"></textarea>
+        </div>
+        
+        <div class="pt-4 border-t border-neutral-100">
+          <button type="submit" class="w-full bg-wa-green text-white font-bold py-3 rounded-xl shadow-wa hover:bg-wa-green-dark transition-colors focus-visible-ring flex justify-center items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Kirim Pesanan via WA
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed top-4 left-1/2 -translate-x-1/2 z-70 flex flex-col gap-2 pointer-events-none" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app-utils.js"></script>
+  <script src="js/app-pricing.js"></script>
+  <script src="js/app-note-input.js"></script>
+  <script src="js/app-cart-storage.js"></script>
+  <script src="js/app-cart-persistence.js"></script>
+  <script src="js/app-cart-render.js"></script>
+  <script src="js/app-cart-item.js"></script>
+  <script src="js/app-cart-note.js"></script>
+  <script src="js/app-cart-add.js"></script>
+  <script src="js/app-cart-actions.js"></script>
+  <script src="js/app-cart-panel.js"></script>
+  <script src="js/app-catalog.js"></script>
+  <script src="js/app-satin-config.js"></script>
+  <script src="js/app-satin-extras.js"></script>
+  <script src="js/app-satin-quantity.js"></script>
+  <script src="js/app-money-config.js"></script>
+  <script src="js/app-money-addons.js"></script>
+  <script src="js/app-money-quantity.js"></script>
+  <script src="js/app-product-modal.js"></script>
+  <script src="js/app-order-form.js"></script>
+  <script src="js/app-whatsapp-message.js"></script>
+  <script src="js/app-accessibility.js"></script>
+  <script src="js/app-content.js"></script>
+  <script src="js/app-price-tabs.js"></script>
+  <script src="js/app-price-satin.js"></script>
+  <script src="js/app-price-money.js"></script>
+  <script src="js/app-navigation.js"></script>
+  <script src="js/app-init.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
