@@ -1,6 +1,6 @@
 const CONFIG = {
   namaUsaha: 'buketduasatu.mks',
-  whatsappNumber: '6289527529107',
+  whatsappNumber: '6285931413627',
   instagram: '@buketduasatu.mks',
   instagramUrl: 'https://instagram.com/buketduasatu.mks',
   alamat: 'Jl. Zebra No.21 Makassar(Sekitaran Mall Ratu Indah)',
