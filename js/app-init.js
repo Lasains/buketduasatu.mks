@@ -26,8 +26,6 @@
 
   const openWhatsApp = (...args) => app.openWhatsApp(...args);
 
-  const renderHargaSection = (...args) => app.renderHargaSection(...args);
-
   const renderProducts = (...args) => app.renderProducts(...args);
 
   const validateConfig = (...args) => app.validateConfig(...args);
@@ -118,7 +116,6 @@
 
     renderProducts();
     initFilters();
-    renderHargaSection();
     initFaq();
     initTestimonials();
     initNavbar();
